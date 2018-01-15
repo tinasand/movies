@@ -1,0 +1,47 @@
+
+<div class="jumbotron" ng-repeat="movie in model.movies">
+    <h1 class="display-4">{{movie.Title}}</h1>
+    <div class="row">
+        <div class="col-sm-4"><img ng-src={{movie.Poster}}/></div>
+        <div class="col-sm-6">
+            <p>Genre: {{movie.Genre}}</p>
+            <p>Runtime: {{movie.Runtime}}</p>
+            <p>Actors: {{movie.Actors}}</p>
+            <p><movie-rating value="movie.Rated" max="5" set-rating="model.setRating(movie, value)">
+            </movie-rating></p>
+            <p><button class="btn btn-default" ng-click="model.upRating(movie)">
+                <span class="glyphicon glyphicon-plus"> </span>
+            </button>
+                <button class="btn btn-default" ng-click="model.downRating(movie)">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button></p>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm-12">
+                <p class="lead">{{movie.Plot}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-primary btn-lg" ng-link="['Details', { id:movie.id}, 'Overview']">
+                    Description - <i>{{movie.Title}}</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <ng-outlet></ng-outlet>
+    </div>
+
+    <accordion>
+        <accordion-panel heading="Panel 1">
+            This is the body for panel 1
+        </accordion-panel>
+        <accordion-panel heading="Panel 2">
+            This is the body for panel 2
+        </accordion-panel>
+    </accordion>
+
+</div>
